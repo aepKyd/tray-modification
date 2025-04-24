@@ -1,0 +1,13 @@
+.tray-overview {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.frame {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #fff;
+}

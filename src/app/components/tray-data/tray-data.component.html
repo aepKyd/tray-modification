@@ -1,0 +1,11 @@
+<div class="tray-data" *ngIf="tray">
+  <p><strong>ID лотка:</strong> {{ tray.id }}</p>
+  <p><strong>Тип лотка:</strong> {{ tray.type }}</p>
+  <p><strong>Количество строк:</strong> {{ tray.rowCount }}</p>
+  <p *ngIf="selectedSection !== null">
+    <strong>Выбранный отдел:</strong> {{ selectedSection }}
+  </p>
+  <p *ngIf="selectedSection === null">
+    <em>Отдел не выбран</em>
+  </p>
+</div>
