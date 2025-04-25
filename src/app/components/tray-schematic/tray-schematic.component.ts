@@ -14,4 +14,10 @@ export class TraySchematicComponent {
   isSectionMissing(sectionNumber: number): boolean {
     return !this.tray?.lines?.some(line => line.lineNumber === sectionNumber);
   }
+
+  generateSections(type: number): number[] {
+    // Предположим, что типы 1-8 соответствуют количеству секций равному их значению
+    // Исключение: если тип не поддерживается, возвращаем пустой массив
+    return type > 0 ? Array.from({ length: type }, (_, index) => index + 1) : [];
+  }
 }

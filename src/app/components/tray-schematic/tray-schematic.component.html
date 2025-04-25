@@ -1,96 +1,15 @@
 <div class="tray-schematic-wrapper">
   <div class="tray-schematic">
     <ng-container [ngSwitch]="tray.type">
-      <!-- Тип 1: Один столбец, одна строка -->
-      <div *ngSwitchCase="1" class="tray-grid tray-type-1">
+      <!-- Общий случай для типов с количеством секций -->
+      <div
+              *ngSwitchCase="tray.type"
+              class="tray-grid"
+              [ngClass]="'tray-type-' + tray.type"
+      >
         <div
                 class="section"
-                [class.selected]="selectedSection === 1"
-                [class.missing]="isSectionMissing(1)"
-        >
-          <span class="cell-number">1</span>
-        </div>
-      </div>
-
-      <!-- Тип 2: Два столбца, одна строка -->
-      <div *ngSwitchCase="2" class="tray-grid tray-type-2">
-        <div
-                class="section"
-                [class.selected]="selectedSection === 1"
-                [class.missing]="isSectionMissing(1)"
-        >
-          <span class="cell-number">1</span>
-        </div>
-        <div
-                class="section"
-                [class.selected]="selectedSection === 2"
-                [class.missing]="isSectionMissing(2)"
-        >
-          <span class="cell-number">2</span>
-        </div>
-      </div>
-
-      <!-- Тип 3: Три столбца, одна строка -->
-      <div *ngSwitchCase="3" class="tray-grid tray-type-3">
-        <div
-                class="section"
-                *ngFor="let section of [1, 2, 3]"
-                [class.selected]="selectedSection === section"
-                [class.missing]="isSectionMissing(section)"
-        >
-          <span class="cell-number">{{ section }}</span>
-        </div>
-      </div>
-
-      <!-- Тип 4: Два столбца, две строки -->
-      <div *ngSwitchCase="4" class="tray-grid tray-type-4">
-        <div
-                class="section"
-                [class.selected]="selectedSection === 1"
-                [class.missing]="isSectionMissing(1)"
-        >
-          <span class="cell-number">1</span>
-        </div>
-        <div
-                class="section"
-                [class.selected]="selectedSection === 2"
-                [class.missing]="isSectionMissing(2)"
-        >
-          <span class="cell-number">2</span>
-        </div>
-        <div
-                class="section"
-                [class.selected]="selectedSection === 3"
-                [class.missing]="isSectionMissing(3)"
-        >
-          <span class="cell-number">3</span>
-        </div>
-        <div
-                class="section"
-                [class.selected]="selectedSection === 4"
-                [class.missing]="isSectionMissing(4)"
-        >
-          <span class="cell-number">4</span>
-        </div>
-      </div>
-
-      <!-- Тип 6: Три столбца, две строки -->
-      <div *ngSwitchCase="6" class="tray-grid tray-type-6">
-        <div
-                class="section"
-                *ngFor="let section of [1, 2, 3, 4, 5, 6]"
-                [class.selected]="selectedSection === section"
-                [class.missing]="isSectionMissing(section)"
-        >
-          <span class="cell-number">{{ section }}</span>
-        </div>
-      </div>
-
-      <!-- Тип 8: Четыре столбца, две строки -->
-      <div *ngSwitchCase="8" class="tray-grid tray-type-8">
-        <div
-                class="section"
-                *ngFor="let section of [1, 2, 3, 4, 5, 6, 7, 8]"
+                *ngFor="let section of generateSections(tray.type)"
                 [class.selected]="selectedSection === section"
                 [class.missing]="isSectionMissing(section)"
         >
