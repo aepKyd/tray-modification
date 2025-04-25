@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tray-overview.component.css']
 })
 export class TrayOverviewComponent {
-  @Input() tray: { id: string; type: number; rowCount: number } | null = null;
+  @Input() tray: { id: string; type: number; rowCount: number, activityCode?: string } | null = null;
   @Input() selectedSection: number | null = null;
 
   eanCode: string = '';

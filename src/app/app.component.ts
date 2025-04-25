@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular Tray App';
 
-  tray = { id: '1234', type: 6, rowCount: 1 };
+  tray = { id: '1234', type: 1, rowCount: 1, activityCode: "goa225" };
   selectedSection = 2;
 }

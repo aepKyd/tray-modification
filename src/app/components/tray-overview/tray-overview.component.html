@@ -1,6 +1,6 @@
 <div class="tray-overview">
   <div class="frame frame-data">
-    <app-tray-data [tray]="tray" [selectedSection]="selectedSection"></app-tray-data>
+    <app-tray-data [tray]="tray"></app-tray-data>
     <div class="ean-input">
       <input type="text" placeholder="Введите EAN" [(ngModel)]="eanCode" />
       <button (click)="submitEAN()">OK</button>
@@ -8,5 +8,10 @@
   </div>
   <div class="frame frame-schematic">
     <app-tray-schematic [trayType]="tray?.type" [selectedSection]="selectedSection"></app-tray-schematic>
+  </div>
+  <div class="frame frame-activity-code" *ngIf="tray?.activityCode">
+    <div class="activity-code-box">
+      {{ tray.activityCode }}
+    </div>
   </div>
 </div>
