@@ -1,11 +1,20 @@
 <div class="tray-data" *ngIf="tray">
-  <p><strong>ID лотка:</strong> {{ tray.id }}</p>
-  <p><strong>Тип лотка:</strong> {{ tray.type }}</p>
-  <p><strong>Количество строк:</strong> {{ tray.rowCount }}</p>
-  <p *ngIf="selectedSection !== null">
-    <strong>Выбранный отдел:</strong> {{ selectedSection }}
-  </p>
-  <p *ngIf="selectedSection === null">
-    <em>Отдел не выбран</em>
-  </p>
+  <!-- Первая строка: один фрейм с ID лотка -->
+  <div class="tray-row tray-row-single">
+    <div class="tray-frame">
+      <p><strong>ID лотка:</strong> {{ tray.id }}</p>
+    </div>
+  </div>
+
+  <!-- Вторая строка: два фрейма -->
+  <div class="tray-row tray-row-double">
+    <!-- Левый фрейм: тип лотка -->
+    <div class="tray-frame">
+      <p><strong>Тип лотка:</strong> {{ tray.type }}</p>
+    </div>
+    <!-- Правый фрейм: количество строк -->
+    <div class="tray-frame">
+      <p><strong>Количество строк:</strong> {{ tray.rowCount }}</p>
+    </div>
+  </div>
 </div>
