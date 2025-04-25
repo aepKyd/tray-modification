@@ -116,3 +116,7 @@
   text-align: center;
   padding: 10px;
 }
+
+.section.missing {
+  background-color: #efefef;
+}
