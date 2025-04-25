@@ -27,7 +27,7 @@
           <th>№</th>
           <th>Код товара</th>
           <th>Количество</th>
-          <th>Количество резерва</th>
+          <th>Резерв</th>
           <th>Срок годности</th>
           <th>Код блокировки</th>
           <th>Код лотка</th>
@@ -65,7 +65,7 @@
     <!-- Кнопки под таблицей -->
     <div class="actions-container">
       <button (click)="createNewTray()">Новый лоток</button>
-      <button (click)="cancel()">Отмена</button>
+      <button *ngIf="isAnyLineHighlighted()" (click)="cancel()">Отмена</button>
       <button (click)="exit()">Выход</button>
     </div>
   </div>

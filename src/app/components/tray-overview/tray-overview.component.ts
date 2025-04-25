@@ -57,7 +57,13 @@ export class TrayOverviewComponent {
   // Обработчик кнопки "Отмена"
   cancel(): void {
     console.log('Отмена');
-    // Добавьте логику для отмены действия
+
+    this.eanCode = '';
+    this.selectedSection = null;
+    if (this.tray?.lines) {
+      // Сброс выделения для всех строк
+      this.tray.lines.forEach(line => (line.isHighlighted = false));
+    }
   }
 
   // Обработчик кнопки "Выход"
