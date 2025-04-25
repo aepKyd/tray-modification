@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="frame frame-schematic">
-        <app-tray-schematic [tray]="tray" [selectedSection]="2"></app-tray-schematic>
+        <app-tray-schematic [tray]="tray" [selectedSection]="selectedSection"></app-tray-schematic>
       </div>
       <div class="frame frame-activity-code" *ngIf="tray?.activityCode">
         <div class="activity-code-box">
@@ -24,7 +24,7 @@
       <table>
         <thead>
         <tr>
-          <th>№ ячейки</th>
+          <th>№</th>
           <th>Код товара</th>
           <th>Количество</th>
           <th>Количество резерва</th>
@@ -39,7 +39,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let row of tray?.lines; let i = index">
+        <tr *ngFor="let row of tray?.lines; let i = index" [class.highlighted]="row.isHighlighted">
           <td>{{ row.lineNumber }}</td>
           <td>{{ row.productCode }}</td>
           <td>{{ row.quantity }}</td>
@@ -51,7 +51,9 @@
           <td>{{ row.sscc }}</td>
           <td>{{ row.ean }}</td>
           <td>{{ row.client }}</td>
-          <td><button (click)="editRow(i)">Изменить</button></td>
+          <td>
+            <button *ngIf="row.isHighlighted || !isAnyLineHighlighted()" (click)="editRow(i)">Изменить</button>
+          </td>
         </tr>
         <tr *ngIf="!tray?.lines || tray.lines.length === 0">
           <td colspan="12" style="text-align: center;">Нет данных для отображения</td>

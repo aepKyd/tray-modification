@@ -152,3 +152,11 @@ button:hover {
   white-space: nowrap; /* Отключаем перенос текста */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Легкая тень */
 }
+
+tr.highlighted {
+  background-color: #90ee90; /* Желтый цвет для выделенной строки */
+}
+
+tr.highlighted:hover {
+  background-color: #73d073; /* Темно-желтый цвет при наведении */
+}

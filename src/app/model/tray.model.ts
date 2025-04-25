@@ -34,20 +34,21 @@ export class Line {
   sscc: string;
   ean: string;
   client: string;
+  isHighlighted?: boolean; // Новое поле для выделения строки
 
   constructor({
-    lineNumber,
-    productCode,
-    quantity,
-    reserveQuantity,
-    expiryDate,
-    lockCode,
-    trayCode,
-    acceptanceNumber,
-    sscc,
-    ean,
-    client,
-  }: {
+                lineNumber,
+                productCode,
+                quantity,
+                reserveQuantity,
+                expiryDate,
+                lockCode,
+                trayCode,
+                acceptanceNumber,
+                sscc,
+                ean,
+                client,
+              }: {
     lineNumber: number;
     productCode: string;
     quantity: number;
@@ -71,5 +72,6 @@ export class Line {
     this.sscc = sscc;
     this.ean = ean;
     this.client = client;
+    this.isHighlighted = false;
   }
 }

@@ -10,6 +10,11 @@ export class TraySchematicComponent {
   @Input() tray: Tray | undefined;
   @Input() selectedSection: number | null = null;
 
+// Метод для добавления класса выделения
+  isSectionHighlighted(sectionNumber: number): boolean {
+    return this.selectedSection === sectionNumber;
+  }
+
   // Method to check if a section number exists in the tray's lines
   isSectionMissing(sectionNumber: number): boolean {
     return !this.tray?.lines?.some(line => line.lineNumber === sectionNumber);

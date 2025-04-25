@@ -11,6 +11,8 @@ export class TrayOverviewComponent {
 
   eanCode: string = '';
 
+  selectedSection: number;
+
   // Метод для обработки действия "Изменить"
   editRow(index: number): void {
     if (this.tray?.lines) {
@@ -21,7 +23,29 @@ export class TrayOverviewComponent {
 
   submitEAN(): void {
     console.log('EAN submitted:', this.eanCode);
-    // Добавьте необходимую логику для обработки EAN
+
+
+    if (this.tray?.lines) {
+      // Сброс выделения для всех строк
+      this.tray.lines.forEach(line => (line.isHighlighted = false));
+
+      if (!this.eanCode.trim()) {
+        // Если поле EAN пустое, сбрасываем выделение и делаем кнопки видимыми
+        console.log('Поле EAN пустое. Сбрасываем выделение.');
+        this.selectedSection = null;
+        return;
+      }
+
+      // Поиск строки, где EAN содержит введённое значение
+      const matchedLine = this.tray.lines.find(line =>
+          line.ean.includes(this.eanCode)
+      );
+
+      if (matchedLine) {
+        matchedLine.isHighlighted = true; // Выделение строки
+        this.selectedSection = matchedLine.lineNumber; // Выделение ячейки в компоненте Tray Schematic
+      }
+    }
   }
 
   // Обработчик кнопки "Новый лоток"
@@ -42,4 +66,9 @@ export class TrayOverviewComponent {
     // Добавьте логику для выхода
   }
 
+  protected readonly length = length;
+
+  isAnyLineHighlighted() {
+    return this.tray.lines.find(line => line.isHighlighted);
+  }
 }
