@@ -7,6 +7,7 @@
 .frame {
   flex: 1;
   padding: 10px;
+  max-height: 30vh;
 }
 
 .ean-input {
@@ -42,14 +43,22 @@
 
 .tray-overview-container {
   display: flex;
-  flex-direction: column; /* Элементы располагаются в колонку */
-  height: 100vh; /* Занимаем всю высоту окна браузера */
-  padding: 20px; /* Добавляем внутренние отступы для контейнера */
-  box-sizing: border-box; /* Учитываем отступы в общей ширине и высоте */
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.tray-content-container {
+  max-width: 100%; /* Максимальная ширина для всех элементов */
+  margin: 0 auto; /* Центрирование по горизонтали */
+  display: flex;
+  flex-direction: column;
 }
 
 .table-container {
   flex-grow: 1; /* Таблица занимает всё оставшееся пространство */
+  max-height: 45vh;
   overflow-y: auto; /* Вертикальный скролл */
   overflow-x: auto; /* Горизонтальный скролл */
   border: 1px solid #ddd; /* Граница вокруг таблицы */
@@ -104,7 +113,7 @@ button:hover {
   display: flex;
   justify-content: flex-end; /* Кнопки выравниваются справа */
   gap: 10px; /* Расстояние между кнопками */
-  margin-top: 20px; /* Отступ сверху */
+  margin: 20px; /* Отступ сверху */
 }
 
 .actions-container button {

@@ -1,67 +1,70 @@
 <div class="tray-overview-container">
-  <div class="tray-overview">
-    <div class="frame frame-data">
-      <app-tray-data [tray]="tray"></app-tray-data>
-      <div class="ean-input">
-        <input type="text" placeholder="Введите EAN" [(ngModel)]="eanCode" />
-        <button (click)="submitEAN()">OK</button>
+  <div class="tray-content-container">
+    <!-- Данные лотка -->
+    <div class="tray-overview">
+      <div class="frame frame-data">
+        <app-tray-data [tray]="tray"></app-tray-data>
+        <div class="ean-input">
+          <input type="text" placeholder="Введите EAN" [(ngModel)]="eanCode" />
+          <button (click)="submitEAN()">OK</button>
+        </div>
+      </div>
+      <div class="frame frame-schematic">
+        <app-tray-schematic [trayType]="tray?.type" [selectedSection]="2"></app-tray-schematic>
+      </div>
+      <div class="frame frame-activity-code" *ngIf="tray?.activityCode">
+        <div class="activity-code-box">
+          {{ tray.activityCode }}
+        </div>
       </div>
     </div>
-    <div class="frame frame-schematic">
-      <app-tray-schematic [trayType]="tray?.type" [selectedSection]="2"></app-tray-schematic>
-    </div>
-    <div class="frame frame-activity-code" *ngIf="tray?.activityCode">
-      <div class="activity-code-box">
-        {{ tray.activityCode }}
-      </div>
-    </div>
-  </div>
 
-  <!-- Таблица -->
-  <div class="table-container">
-    <table>
-      <thead>
-      <tr>
-        <th>№ ячейки</th>
-        <th>Код товара</th>
-        <th>Количество</th>
-        <th>Количество резерва</th>
-        <th>Срок годности</th>
-        <th>Код блокировки</th>
-        <th>Код лотка</th>
-        <th>№ приёмки</th>
-        <th>SSCC</th>
-        <th>EAN</th>
-        <th>Клиент</th>
-        <th></th> <!-- Пустой столбец для кнопки -->
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let row of tray?.tableData; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td>{{ row.productCode }}</td>
-        <td>{{ row.quantity }}</td>
-        <td>{{ row.reserveQuantity }}</td>
-        <td>{{ row.expiryDate }}</td>
-        <td>{{ row.lockCode }}</td>
-        <td>{{ row.trayCode }}</td>
-        <td>{{ row.acceptanceNumber }}</td>
-        <td>{{ row.sscc }}</td>
-        <td>{{ row.ean }}</td>
-        <td>{{ row.client }}</td>
-        <td><button (click)="editRow(i)">Изменить</button></td>
-      </tr>
-      <tr *ngIf="!tray?.tableData || tray.tableData.length === 0">
-        <td colspan="12" style="text-align: center;">Нет данных для отображения</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- Таблица -->
+    <div class="table-container">
+      <table>
+        <thead>
+        <tr>
+          <th>№ ячейки</th>
+          <th>Код товара</th>
+          <th>Количество</th>
+          <th>Количество резерва</th>
+          <th>Срок годности</th>
+          <th>Код блокировки</th>
+          <th>Код лотка</th>
+          <th>№ приёмки</th>
+          <th>SSCC</th>
+          <th>EAN</th>
+          <th>Клиент</th>
+          <th></th> <!-- Пустой столбец для кнопки -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let row of tray?.tableData; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ row.productCode }}</td>
+          <td>{{ row.quantity }}</td>
+          <td>{{ row.reserveQuantity }}</td>
+          <td>{{ row.expiryDate }}</td>
+          <td>{{ row.lockCode }}</td>
+          <td>{{ row.trayCode }}</td>
+          <td>{{ row.acceptanceNumber }}</td>
+          <td>{{ row.sscc }}</td>
+          <td>{{ row.ean }}</td>
+          <td>{{ row.client }}</td>
+          <td><button (click)="editRow(i)">Изменить</button></td>
+        </tr>
+        <tr *ngIf="!tray?.tableData || tray.tableData.length === 0">
+          <td colspan="12" style="text-align: center;">Нет данных для отображения</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <!-- Кнопки под таблицей -->
-  <div class="actions-container">
-    <button (click)="createNewTray()">Новый лоток</button>
-    <button (click)="cancel()">Отмена</button>
-    <button (click)="exit()">Выход</button>
+    <!-- Кнопки под таблицей -->
+    <div class="actions-container">
+      <button (click)="createNewTray()">Новый лоток</button>
+      <button (click)="cancel()">Отмена</button>
+      <button (click)="exit()">Выход</button>
+    </div>
   </div>
 </div>
