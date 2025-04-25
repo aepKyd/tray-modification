@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import {Tray} from "../../model/tray.model";
 
 @Component({
   selector: 'app-tray-overview',
@@ -6,31 +7,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tray-overview.component.css']
 })
 export class TrayOverviewComponent {
-  @Input() tray: {
-    id: string;
-    type: number;
-    rowCount: number;
-    activityCode?: string;
-    tableData?: Array<{
-      productCode: string;
-      quantity: number;
-      reserveQuantity: number;
-      expiryDate: string;
-      lockCode: string;
-      trayCode: string;
-      acceptanceNumber: string;
-      sscc: string;
-      ean: string;
-      client: string;
-    }>
-  } | null = null;
+  @Input() tray: Tray;
 
   eanCode: string = '';
 
   // Метод для обработки действия "Изменить"
   editRow(index: number): void {
-    if (this.tray?.tableData) {
-      console.log('Редактирование строки:', index, this.tray.tableData[index]);
+    if (this.tray?.lines) {
+      console.log('Редактирование строки:', index, this.tray.lines[index]);
       // Добавьте логику для редактирования строки
     }
   }

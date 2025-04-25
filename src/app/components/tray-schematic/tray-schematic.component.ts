@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import {Tray} from "../../model/tray.model";
 
 @Component({
   selector: 'app-tray-schematic',
@@ -6,6 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tray-schematic.component.css']
 })
 export class TraySchematicComponent {
-  @Input() trayType: number | undefined;
+  @Input() tray: Tray | undefined;
   @Input() selectedSection: number | null = null;
 }
