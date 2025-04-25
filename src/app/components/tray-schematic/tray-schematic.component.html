@@ -1,6 +1,13 @@
 <div class="tray-schematic-wrapper">
   <div class="tray-schematic">
     <ng-container [ngSwitch]="trayType">
+      <!-- Тип 1: Один столбец, одна строка -->
+      <div *ngSwitchCase="1" class="tray-grid tray-type-1">
+        <div class="section" [class.selected]="selectedSection === 1">
+          <span class="cell-number">1</span>
+        </div>
+      </div>
+
       <!-- Тип 2: Два столбца, одна строка -->
       <div *ngSwitchCase="2" class="tray-grid tray-type-2">
         <div class="section" [class.selected]="selectedSection === 1">

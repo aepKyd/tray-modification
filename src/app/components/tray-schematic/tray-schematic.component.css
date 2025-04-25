@@ -23,6 +23,26 @@
   gap: 0; /* Убираем зазоры между секциями */
 }
 
+/* Тип 1: Один столбец, одна строка */
+.tray-type-1 {
+  grid-template-columns: 1fr; /* Один столбец */
+  grid-template-rows: 1fr;    /* Одна строка */
+}
+
+/* Стили для секций в типе 1 */
+.tray-type-1 .section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #000; /* Граница вокруг секции */
+  box-sizing: border-box;
+}
+
+
 /* Тип 2: Два столбца, одна строка */
 .tray-type-2 {
   grid-template-columns: 1fr 1fr; /* Два столбца */
