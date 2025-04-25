@@ -13,10 +13,14 @@ export class TrayOverviewComponent {
 
   selectedSection: number;
 
+  editedRow: number;
+
   // Метод для обработки действия "Изменить"
   editRow(index: number): void {
     if (this.tray?.lines) {
       console.log('Редактирование строки:', index, this.tray.lines[index]);
+
+      this.editedRow = index;
       // Добавьте логику для редактирования строки
     }
   }
