@@ -39,25 +39,49 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let row of tray?.lines; let i = index" [class.highlighted]="row.isHighlighted">
-          <td>{{ row.lineNumber }}</td>
-          <td>{{ row.productCode }}</td>
-          <td>{{ row.quantity }}</td>
-          <td>{{ row.reserveQuantity }}</td>
-          <td>{{ row.expiryDate }}</td>
-          <td>{{ row.lockCode }}</td>
-          <td>{{ row.trayCode }}</td>
-          <td>{{ row.acceptanceNumber }}</td>
-          <td>{{ row.sscc }}</td>
-          <td>{{ row.ean }}</td>
-          <td>{{ row.client }}</td>
-          <td>
-            <button *ngIf="row.isHighlighted || !isAnyLineHighlighted()" (click)="editRow(i)">Изменить</button>
-          </td>
-        </tr>
-        <tr *ngIf="!tray?.lines || tray.lines.length === 0">
-          <td colspan="12" style="text-align: center;">Нет данных для отображения</td>
-        </tr>
+        <ng-container *ngFor="let row of tray?.lines; let i = index">
+          <!-- Первая строка данных -->
+          <tr [class.highlighted]="row.isHighlighted">
+            <td>{{ row.lineNumber }}</td>
+            <td>{{ row.productCode }}</td>
+            <td>{{ row.quantity }}</td>
+            <td>{{ row.reserveQuantity }}</td>
+            <td>{{ row.expiryDate }}</td>
+            <td>{{ row.lockCode }}</td>
+            <td>{{ row.trayCode }}</td>
+            <td>{{ row.acceptanceNumber }}</td>
+            <td>{{ row.sscc }}</td>
+            <td>{{ row.ean }}</td>
+            <td>{{ row.client }}</td>
+            <td>
+              <button *ngIf="row.isHighlighted || !isAnyLineHighlighted()" (click)="editRow(i)">Изменить</button>
+            </td>
+          </tr>
+
+          <!-- Вторая строка с полями ввода -->
+          <tr *ngIf="selectedSection === i">
+            <td colspan="12">
+              <div class="input-row">
+                <div class="input-box">
+                  <label>Дефицит:</label>
+                  <input type="number" [(ngModel)]="row.deficit" />
+                </div>
+                <div class="input-box">
+                  <label>Брак:</label>
+                  <input type="number" [(ngModel)]="row.defect" />
+                </div>
+                <div class="input-box">
+                  <label>Трансфер:</label>
+                  <input type="number" [(ngModel)]="row.transfer" />
+                </div>
+                <div class="input-box sand-border">
+                  <label>Остаток:</label>
+                  <input type="number" [(ngModel)]="row.remaining" />
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
         </tbody>
       </table>
     </div>

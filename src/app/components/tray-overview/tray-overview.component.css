@@ -161,3 +161,40 @@ tr.highlighted {
 tr.highlighted:hover {
   background-color: #73d073; /* Темно-желтый цвет при наведении */
 }
+
+.input-row {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  align-items: center; /* Центрирование по вертикали */
+  gap: 1rem; /* Расстояние между полями */
+  padding: 1rem 0;
+}
+
+.input-box {
+  display: flex;
+  align-items: center; /* Центрирование лейбла и поля ввода */
+  gap: 0.5rem; /* Расстояние между лейблом и полем ввода */
+  padding: 0.5rem;
+  border: 2px solid #73d073;
+  border-radius: 8px; /* Скругленные края */
+  background-color: #90ee90; /* Голубой фон */
+}
+
+.sand-border {
+  background-color: #e8bd95;
+  border: 2px solid #f4a460;
+}
+
+.input-box label {
+  font-size: 1rem;
+  color: #333;
+  white-space: nowrap; /* Чтобы текст лейбла не переносился */
+}
+
+.input-box input {
+  border: none;
+  outline: none;
+  padding: 0.3rem;
+  font-size: 1rem;
+  width: 100px; /* Ширина полей ввода */
+}
