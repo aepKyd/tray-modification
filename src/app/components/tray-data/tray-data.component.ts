@@ -8,4 +8,8 @@ import {Tray} from "../../model/tray.model";
 })
 export class TrayDataComponent {
   @Input() tray: Tray;
+
+  countLines() {
+    return [...new Set(this.tray.lines.map(line => line.lineNumber))].length;
+  }
 }
