@@ -35,6 +35,9 @@ export class Line {
   ean: string;
   client: string;
   isHighlighted?: boolean; // Новое поле для выделения строки
+  deficit?: number;
+  defect?: number;
+  transfer?: number;
 
   constructor({
                 lineNumber,
