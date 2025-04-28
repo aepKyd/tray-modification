@@ -54,7 +54,7 @@
             <td>{{ row.ean }}</td>
             <td>{{ row.client }}</td>
             <td>
-              <button *ngIf="row.isHighlighted || !isAnyLineHighlighted()" (click)="editRow(i)">Изменить</button>
+              <button *ngIf="isShowEdit(i)" (click)="editRow(i)"> {{ editedRow === i ? 'Применить' : 'Изменить' }}</button>
             </td>
           </tr>
 
@@ -76,7 +76,7 @@
                 </div>
                 <div class="input-box sand-border">
                   <label>Остаток:</label>
-                  <input type="number" [(ngModel)]="row.remaining" />
+                  <input type="number"/>
                 </div>
               </div>
             </td>

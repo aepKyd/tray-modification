@@ -11,16 +11,29 @@ export class TrayOverviewComponent {
 
   eanCode: string = '';
 
-  selectedSection: number;
+  selectedSection: number | null = null;
 
-  editedRow: number;
+  editedRow: number | null = null;
 
   // Метод для обработки действия "Изменить"
   editRow(index: number): void {
     if (this.tray?.lines) {
-      console.log('Редактирование строки:', index, this.tray.lines[index]);
+      if (this.editedRow === null) {
+        console.log('Редактирование строки:', index, this.tray.lines[index]);
 
-      this.editedRow = index;
+        this.editedRow = index;
+        const matchedLine = this.tray.lines[index];
+        matchedLine.isHighlighted = true; // Выделение строки
+        this.selectedSection = matchedLine.lineNumber; // Выделение ячейки в компоненте Tray Schematic
+      } else if (index === this.editedRow) {
+        console.log('Отправка', index, this.tray.lines[index]);
+
+        // submit update
+        this.selectedSection = null;
+        this.tray.lines.forEach(line => (line.isHighlighted = false));
+        this.editedRow = null;
+      }
+
       // Добавьте логику для редактирования строки
     }
   }
@@ -76,9 +89,19 @@ export class TrayOverviewComponent {
     // Добавьте логику для выхода
   }
 
-  protected readonly length = length;
+  isAnyLineHighlighted(): boolean {
+    return !!this.tray?.lines?.some(line => line.isHighlighted);
+  }
 
-  isAnyLineHighlighted() {
-    return this.tray.lines.find(line => line.isHighlighted);
+  isEditingRow(index: number): boolean {
+    return this.editedRow === index;
+  }
+
+  isAnyRowEditing(): boolean {
+    return this.editedRow !== null;
+  }
+
+  isShowEdit(i: number) {
+    return (this.tray?.lines[i]?.isHighlighted || !this.isAnyLineHighlighted()) && (this.editedRow === null || this.editedRow === i)
   }
 }
