@@ -2,7 +2,7 @@
 .tray-schematic-wrapper {
   position: relative;
   width: 100%; /* Ширина контейнера 100% от родителя */
-  height: 33vh; /* Высота 1/3 от высоты экрана */
+  height: 100%; /* Высота 1/3 от высоты экрана */
   overflow: hidden;
 }
 
